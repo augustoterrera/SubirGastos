@@ -4,7 +4,6 @@ from datetime import date
 from decimal import Decimal, InvalidOperation
 import contextlib
 from urllib.parse import urlparse, urlunparse, parse_qs, urlencode
-
 import streamlit as st
 import psycopg2
 from psycopg2 import pool
