@@ -371,8 +371,3 @@ if st.session_state.mostrar_confirmacion and not hasattr(st, "dialog"):
                     st.rerun()
                 else:
                     st.error("❌ Error al cargar el gasto. Revisá el mensaje en el sidebar.")
-
-# -----------------------------
-# Notas
-# -----------------------------
-st.caption("Conexión automática con pool + keepalives. Guardando nombre de obra en gastos.obra. Sugerido: gastos.monto NUMERIC(12,2).")
