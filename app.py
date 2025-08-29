@@ -165,9 +165,6 @@ if not st.session_state.db_connected:
     test_connection()
 
 # -----------------------------
-# Sidebar: estado de conexión (sin botón)
-# -----------------------------
-# -----------------------------
 # Sidebar: estado de conexión + botón de reintento
 # -----------------------------
 st.sidebar.header("Base de datos")
@@ -190,6 +187,7 @@ if st.session_state.get("db_error"):
 last_check = st.session_state.get("last_db_check")
 if last_check:
     st.sidebar.caption("Último chequeo: " + last_check.strftime("%d/%m/%Y %H:%M:%S"))
+
 
 # Cargar obras SIEMPRE; la propia función gestiona errores y estado
 lista_obras = cargar_obras()  # ['Obra A', 'Obra B', ...]
