@@ -187,7 +187,7 @@ last_check = st.session_state.get("last_db_check")
 if last_check:
     st.sidebar.caption("Último chequeo: " + last_check.strftime("%d/%m/%Y %H:%M:%S"))
     
-st.sidebar.info("En caso de problemas presionar el boton de reintentar conexión.")
+st.sidebar.info("ℹ️ En caso de problemas presionar el boton de reintentar conexión.")
 
 
 # Cargar obras SIEMPRE; la propia función gestiona errores y estado
