@@ -167,6 +167,9 @@ if not st.session_state.db_connected:
 # -----------------------------
 # Sidebar: estado de conexión (sin botón)
 # -----------------------------
+# -----------------------------
+# Sidebar: estado de conexión + botón de reintento
+# -----------------------------
 st.sidebar.header("Base de datos")
 
 if st.sidebar.button("🔄 Reintentar conexión"):
@@ -174,18 +177,20 @@ if st.sidebar.button("🔄 Reintentar conexión"):
         test_connection()
     st.rerun()
 
-if st.session_state.db_connected:
+if st.session_state.get("db_connected"):
     st.sidebar.success("Conectado ✅")
 else:
     st.sidebar.error("Sin conexión ❌")
     if not DATABASE_URL:
         st.sidebar.info("Configura DATABASE_URL en .streamlit/secrets.toml o variable de entorno.")
 
-if st.session_state.db_error:
-    st.sidebar.caption(f"Detalle: {st.session_state.db_error}")
+if st.session_state.get("db_error"):
+    st.sidebar.caption(f"Detalle: {st.session_state['db_error']}")
 
-if st.session_state.last_db_check:
-    st.sidebar.caption("Último chequeo: " + st.session_state.last_db_check.strftime("%d/%m/%Y %H:%M:%S"))
+last_check = st.session_state.get("last_db_check")
+if last_check:
+    st.sidebar.caption("Último chequeo: " + last_check.strftime("%d/%m/%Y %H:%M:%S"))
+
 # Cargar obras SIEMPRE; la propia función gestiona errores y estado
 lista_obras = cargar_obras()  # ['Obra A', 'Obra B', ...]
 
